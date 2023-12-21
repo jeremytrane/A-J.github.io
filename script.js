@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
   function showFullPicture(imagePath) {
     const modal = document.createElement('div');
     modal.style = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 10000;';
-    
+  
     const image = document.createElement('img');
     image.src = imagePath;
-    image.style = 'max-width: 100%; max-height: 100%;';
+    image.style = 'max-height: 100vh; width: auto;'; 
   
     const closeModal = document.createElement('button');
     closeModal.textContent = 'Close';
@@ -64,4 +64,5 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.appendChild(closeModal);
     document.body.appendChild(modal);
   }
+  
   
