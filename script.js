@@ -1,12 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const imagePaths = []; // Array of your 139 image paths
+  const imagePaths = [];
+  const imageNames = Array.from({ length: 139 }, (v, i) => `${i + 1}/139`);
+  const imageDescriptions = Array.from({ length: 139 }, (v, i) => `Description ${i + 1}`);
+
   for(let i = 1; i <= 139; i++) {
-      imagePaths.push(`Photos/${i}.JPEG`); // Assuming your images are named in a sequential manner
+      imagePaths.push(`Photos/${i}.png`);
   }
 
   const slideElement = document.getElementById('slide');
   
-  imagePaths.forEach((path) => {
+  imagePaths.forEach((path, index) => {
       const itemDiv = document.createElement('div');
       itemDiv.className = 'item';
       itemDiv.style.backgroundImage = `url(${path})`;
@@ -16,11 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
       const nameDiv = document.createElement('div');
       nameDiv.className = 'name';
-      nameDiv.textContent = 'LUNDEV'; // Replace with relevant text or make dynamic
+      nameDiv.textContent = imageNames[index]; // Use dynamic name
 
       const desDiv = document.createElement('div');
       desDiv.className = 'des';
-      desDiv.textContent = 'Description here'; // Replace with relevant text or make dynamic
+      desDiv.textContent = imageDescriptions[index]; // Use dynamic description
 
       const button = document.createElement('button');
       button.textContent = 'See full picture';
