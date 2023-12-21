@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const imagePaths = [];
-    const imageNames = Array.from({ length: 139 }, (v, i) => `${i + 1}/139`);
+    const imageNames = Array.from({ length: 139 }, (v, i) => `${i}/139`);
     const imageDescriptions = Array.from({ length: 139 }, (v, i) => `Description ${i + 1}`);
   
     for(let i = 1; i <= 139; i++) {
