@@ -36,15 +36,13 @@ body{
   border-radius: 20px;
   box-shadow:  0 30px 50px #505050;
 }
-.item:nth-child(1),
-.item:nth-child(2) {
-  overflow: hidden;
+.item:first-child {
   z-index: 2;
-  width: 100%; /* Adjust width automatically */
-  height: 100vh; /* Full viewport height */
-  background-position: center center; /* Center the background image */
-  background-size: contain; /* Scale image to fit container's height */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
+  width: 100%; 
+  height: 100vh;
+  background-position: center center; 
+  background-size: contain;
+  background-repeat: no-repeat; 
   position: absolute;
   top: 50%;
   left: 50%;
@@ -54,19 +52,19 @@ body{
   background-color: #863434;
 }
 
-.item:nth-child(3){
+.item:nth-child(2){
   left:60%;
   z-index: 2;
 }
-.item:nth-child(4){
+.item:nth-child(3){
   left:calc(60% + 220px);
   z-index: 2;
 }
-.item:nth-child(5){
+.item:nth-child(4){
   left:calc(60% + 440px);
   z-index: 2;
 }
-.item:nth-child(n+6){
+.item:nth-child(n+5){
   left:calc(60% + 660px);
   z-index: 2;
   opacity: 0;
@@ -83,7 +81,7 @@ body{
   display: none;
   font-family: system-ui;
 }
-.item:nth-child(2) .content{
+.item:first-child .content{
   display: block;
   z-index: 11111;
 }
@@ -91,18 +89,18 @@ body{
   font-size: 40px;
   font-weight: bold;
   opacity: 0;
-  animation:showcontent 1s ease-in-out 1 forwards
+  animation:showcontent 1s ease-in-out 1 forwards;
 }
 .item .des{
   margin:20px 0;
   opacity: 0;
-  animation:showcontent 1s ease-in-out 0.3s 1 forwards
+  animation:showcontent 1s ease-in-out 0.3s 1 forwards;
 }
 .item button{
   padding:10px 20px;
   border:none;
   opacity: 0;
-  animation:showcontent 1s ease-in-out 0.6s 1 forwards
+  animation:showcontent 1s ease-in-out 0.6s 1 forwards;
 }
 @keyframes showcontent{
   from{
@@ -128,19 +126,19 @@ body{
   border-radius: 50%;
   border:1px solid #555;
   transition: 0.5s;
-}.buttons button:hover{
+}
+.buttons button:hover{
   background-color: #bac383;
 }
 .album-link {
-  position: fixed; /* Fixed positioning relative to the viewport */
-  bottom: 20px;    /* 20px from the bottom */
-  right: 20px;     /* 20px from the right */
-  z-index: 1000;   /* High z-index to ensure it's above other elements */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
 }
 
 .album-link button {
-  padding: 10px 15px; /* Adjust padding as needed */
-  font-size: 16px;    /* Adjust font size as needed */
-  cursor: pointer;    /* Cursor changes to pointer on hover */
-  /* Add any additional styling you want for the button */
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
 }
