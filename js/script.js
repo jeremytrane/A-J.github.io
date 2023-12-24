@@ -1,51 +1,64 @@
 document.addEventListener('DOMContentLoaded', function() {
     const imagePaths = [];
     const imageNames = Array.from({ length: 139 }, (v, i) => `${i + 1}/139`);
-    const imageDescriptions = Array.from({ length: 139 }, (v, i) => `Description ${i + 1}`);
-  
-    for(let i = 1; i <= 139; i++) {
-        imagePaths.push(`Photos/${i}.png`);
-    }
-  
-    const slideElement = document.getElementById('slide');
-    
-    imagePaths.forEach((path, index) => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'item';
-        itemDiv.style.backgroundImage = `url(${path})`;
-  
-        const contentDiv = document.createElement('div');
-        contentDiv.className = 'content';
-  
-        const nameDiv = document.createElement('div');
-        nameDiv.className = 'name';
-        nameDiv.textContent = imageNames[index];
-  
-        const desDiv = document.createElement('div');
-        desDiv.className = 'des';
-        desDiv.textContent = imageDescriptions[index];
-  
-        const button = document.createElement('button');
-        button.textContent = 'See full picture';
-        button.onclick = function() { showFullPicture(path) };
-  
-        contentDiv.appendChild(nameDiv);
-        contentDiv.appendChild(desDiv);
-        contentDiv.appendChild(button);
-        itemDiv.appendChild(contentDiv);
-        slideElement.appendChild(itemDiv);
-    });
-  
-    document.getElementById('next').onclick = function() {
-        let lists = document.querySelectorAll('.item');
-        slideElement.appendChild(lists[0]);
-    }
-  
-    document.getElementById('prev').onclick = function() {
-        let lists = document.querySelectorAll('.item');
-        slideElement.prepend(lists[lists.length - 1]);
-    }
-  });
+
+    fetch('descriptions.json')
+    .then(response => response.json())
+    .then(customDescriptions => {
+        for(let i = 1; i <= 139; i++) {
+            imagePaths.push(`Photos/${i}.png`);
+        }
+
+        const slideElement = document.getElementById('slide');
+        
+        imagePaths.forEach((path, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'item';
+            itemDiv.style.backgroundImage = `url(${path})`;
+      
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'content';
+      
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'name';
+            nameDiv.textContent = imageNames[index];
+      
+            const desDiv = document.createElement('div');
+            desDiv.className = 'des';
+            desDiv.textContent = customDescriptions[index]; // Use custom description
+      
+            const button = document.createElement('button');
+            button.textContent = 'See full picture';
+            button.onclick = function() { showFullPicture(path) };
+      
+            contentDiv.appendChild(nameDiv);
+            contentDiv.appendChild(desDiv);
+            contentDiv.appendChild(button);
+            itemDiv.appendChild(contentDiv);
+            slideElement.appendChild(itemDiv);
+        });
+
+        setUpButtons();
+    })
+    .catch(error => console.error('Error loading descriptions:', error));
+});
+
+function setUpButtons() {
+    const nextButton = document.getElementById('next');
+    const prevButton = document.getElementById('prev');
+
+    nextButton.onclick = function() {
+        let items = document.querySelectorAll('.item');
+        let slideElement = document.getElementById('slide');
+        slideElement.appendChild(items[0]);
+    };
+
+    prevButton.onclick = function() {
+        let items = document.querySelectorAll('.item');
+        let slideElement = document.getElementById('slide');
+        slideElement.prepend(items[items.length - 1]);
+    };
+}
   
   function showFullPicture(imagePath) {
     const modal = document.createElement('div');
