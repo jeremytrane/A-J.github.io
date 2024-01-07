@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(customDescriptions => {
         for(let i = 1; i <= 139; i++) {
-            imagePaths.push(`Photos/${i}.png`);
+            imagePaths.push(`../Photos/${i}.png`);
         }
 
         const slideElement = document.getElementById('slide');
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
             const desDiv = document.createElement('div');
             desDiv.className = 'des';
-            desDiv.textContent = customDescriptions[index]; // Use custom description
+            desDiv.textContent = customDescriptions[index];
       
             const button = document.createElement('button');
             button.textContent = 'See full picture';
